@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "PulseHub.Infrastructure/1.0.0": {
+        "dependencies": {
+          "PulseHub.Core": "1.0.0"
+        },
+        "runtime": {
+          "PulseHub.Infrastructure.dll": {}
+        }
+      },
+      "PulseHub.Core/1.0.0": {
+        "runtime": {
+          "PulseHub.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PulseHub.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PulseHub.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
