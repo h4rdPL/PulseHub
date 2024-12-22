@@ -115,3 +115,5 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\obj\Debug\net8.0\refint\PulseHu
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\obj\Debug\net8.0\PulseHub.Tests.pdb
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\obj\Debug\net8.0\PulseHub.Tests.genruntimeconfig.cache
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\obj\Debug\net8.0\ref\PulseHub.Tests.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Castle.Core.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Moq.dll
