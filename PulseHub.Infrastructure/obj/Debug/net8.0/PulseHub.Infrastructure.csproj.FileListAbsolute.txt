@@ -13,3 +13,4 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.Infrastructure\obj\Debug\net8.0\Pulse
 D:\_programowanie\dotNET\PulseHub\PulseHub.Infrastructure\obj\Debug\net8.0\refint\PulseHub.Infrastructure.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.Infrastructure\obj\Debug\net8.0\PulseHub.Infrastructure.pdb
 D:\_programowanie\dotNET\PulseHub\PulseHub.Infrastructure\obj\Debug\net8.0\ref\PulseHub.Infrastructure.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Infrastructure\obj\Debug\net8.0\PulseHub.Infrastructure.sourcelink.json

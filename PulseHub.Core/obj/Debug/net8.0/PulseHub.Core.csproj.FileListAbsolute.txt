@@ -9,3 +9,4 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.Core\obj\Debug\net8.0\PulseHub.Core.d
 D:\_programowanie\dotNET\PulseHub\PulseHub.Core\obj\Debug\net8.0\refint\PulseHub.Core.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.Core\obj\Debug\net8.0\PulseHub.Core.pdb
 D:\_programowanie\dotNET\PulseHub\PulseHub.Core\obj\Debug\net8.0\ref\PulseHub.Core.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Core\obj\Debug\net8.0\PulseHub.Core.sourcelink.json

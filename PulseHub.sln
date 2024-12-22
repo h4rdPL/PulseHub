@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseHub.Core", "PulseHub.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseHub.Infrastructure", "PulseHub.Infrastructure\PulseHub.Infrastructure.csproj", "{CBE2B2F5-67F8-4539-B3FF-2680CF62D305}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseHub.Tests", "PulseHub.Tests\PulseHub.Tests.csproj", "{919EC0A5-17C4-4760-9547-AC5A2A3EF49E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{CBE2B2F5-67F8-4539-B3FF-2680CF62D305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBE2B2F5-67F8-4539-B3FF-2680CF62D305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBE2B2F5-67F8-4539-B3FF-2680CF62D305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{919EC0A5-17C4-4760-9547-AC5A2A3EF49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{919EC0A5-17C4-4760-9547-AC5A2A3EF49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{919EC0A5-17C4-4760-9547-AC5A2A3EF49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{919EC0A5-17C4-4760-9547-AC5A2A3EF49E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

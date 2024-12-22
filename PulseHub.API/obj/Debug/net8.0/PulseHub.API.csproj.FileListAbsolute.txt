@@ -35,3 +35,4 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.API\obj\Debug\net8.0\refint\PulseHub.
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\obj\Debug\net8.0\PulseHub.API.pdb
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\obj\Debug\net8.0\PulseHub.API.genruntimeconfig.cache
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\obj\Debug\net8.0\ref\PulseHub.API.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.API\obj\Debug\net8.0\PulseHub.API.sourcelink.json
