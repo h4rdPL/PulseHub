@@ -14,6 +14,22 @@ namespace PulseHub.API.Controllers
             _notificationService = notification;
         }
 
+
+
+        [HttpPost("send")]
+        public async Task<IActionResult> SendNotificationAsync(string userId, string message, string channel)
+        {
+            try
+            {
+                await _notificationService.SendNotificationAsync(userId, message, channel);
+                return Ok("Notification sent successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("subscribe")]
         public IActionResult Subscribe(SubscriptionRequest request)
         {
@@ -24,5 +40,48 @@ namespace PulseHub.API.Controllers
 
             return BadRequest("Subscription failed");
         }
+
+        [HttpPost("unsubscribe")]
+        public IActionResult Unsubscribe(string userId, string channel)
+        {
+            if(_notificationService.Unsubscribe(userId, channel))
+            {
+                return Ok("Unsubscription successful");
+            }
+            return BadRequest("Unsubscription failed");
+        }
+
+        [HttpGet("subscriptions/{userId}")]
+        public IActionResult GetSubscriptions(string userId)
+        {
+            var subscriptions = _notificationService.GetSubscriptions(userId);
+            if (subscriptions == null || subscriptions.Count == 0)
+            {
+                return NotFound("No subscriptions found for the user");
+            }
+            return Ok(subscriptions);
+        }
+
+
+        [HttpPost("validate-token")]
+        public IActionResult ValidateDeviceToken([FromBody] string deviceToken)
+        {
+            if (_notificationService.ValidateDeviceToken(deviceToken))
+            {
+                return Ok("Token is valid");
+            }
+            return BadRequest("Invalid device token");
+        }
+
+        [HttpPut("update-token")]
+        public IActionResult UpdateDeviceToken(string userId, string newToken)
+        {
+            if (_notificationService.UpdateDeviceToken(userId, newToken))
+            {
+                return Ok("Device token updated successfully");
+            }
+            return BadRequest("Failed to update device token");
+        }
+
     }
 }

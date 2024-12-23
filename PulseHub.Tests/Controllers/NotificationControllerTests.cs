@@ -50,5 +50,119 @@ namespace PulseHub.Tests
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Subscription failed", badRequestResult.Value);
         }
+
+        [Fact]
+        public void Unsubscribe_ShouldReturnBadRequest_WhenUnsubscribeFails()
+        {
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string channel = "Alerts";
+
+            mockService
+                .Setup(s => s.Unsubscribe(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(false);
+
+            var result = controller.Unsubscribe(userId, channel);
+
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Unsubscription failed", badRequestResult.Value);
+        }
+
+        [Fact]
+        public async Task SendNotificationAsync_ShouldReturnBadRequest_WhenNotificationFails()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string message = "Test notification";
+            string channel = "Alerts";
+
+            mockService
+                .Setup(s => s.SendNotificationAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ThrowsAsync(new System.Exception("Notification failed"));
+
+            // Act
+            var result = await controller.SendNotificationAsync(userId, message, channel);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Notification failed", badRequestResult.Value);
+        }
+
+        [Fact]
+        public void GetSubscriptions_ShouldReturnListOfSubscriptions_WhenUserExists()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            var subscriptions = new List<SubscriptionRequest>
+            {
+                new SubscriptionRequest("user-123", "device-token-abc", "Alerts"),
+                new SubscriptionRequest("user-123", "device-token-def", "News")
+            };
+
+            mockService
+                .Setup(s => s.GetSubscriptions(userId))
+                .Returns(subscriptions);
+
+            // Act
+            var result = controller.GetSubscriptions(userId);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var returnedSubscriptions = Assert.IsType<List<SubscriptionRequest>>(okResult.Value);
+            Assert.Equal(2, returnedSubscriptions.Count);
+        }
+
+        [Fact]
+        public void UpdateDeviceToken_ShouldReturnOk_WhenTokenIsUpdatedSuccessfully()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string newToken = "new-device-token";
+
+            mockService
+                .Setup(s => s.UpdateDeviceToken(userId, newToken))
+                .Returns(true);
+
+            // Act
+            var result = controller.UpdateDeviceToken(userId, newToken);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal("Device token updated successfully", okResult.Value);
+        }
+
+        [Fact]
+        public void UpdateDeviceToken_ShouldReturnBadRequest_WhenUpdateFails()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string newToken = "new-device-token";
+
+            mockService
+                .Setup(s => s.UpdateDeviceToken(userId, newToken))
+                .Returns(false);
+
+            // Act
+            var result = controller.UpdateDeviceToken(userId, newToken);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Failed to update device token", badRequestResult.Value);
+        }
+
     }
 }
