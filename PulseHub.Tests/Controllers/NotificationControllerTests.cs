@@ -164,5 +164,116 @@ namespace PulseHub.Tests
             Assert.Equal("Failed to update device token", badRequestResult.Value);
         }
 
+        [Fact]
+        public void IsSubscribed_ShouldReturnTrue_WhenUserIsSubscribedToChannel()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string channel = "Alerts";
+
+            mockService
+                .Setup(s => s.IsSubscribed(userId, channel))
+                .Returns(true);
+
+            // Act
+            var result = controller.IsSubscribed(userId, channel);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal("User is subscribed to the channel", okResult.Value);
+        }
+
+        [Fact]
+        public void IsSubscribed_ShouldReturnFalse_WhenUserIsNotSubscribedToChannel()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            string userId = "user-123";
+            string channel = "Alerts";
+
+            mockService
+                .Setup(s => s.IsSubscribed(userId, channel))
+                .Returns(false);
+
+            // Act
+            var result = controller.IsSubscribed(userId, channel);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("User is not subscribed to the channel", badRequestResult.Value);
+        }
+
+
+
+
+
+        [Fact]
+        public void Subscribe_ShouldReturnBadRequest_WhenSubscriptionRequestIsNull()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            SubscriptionRequest subscriptionRequest = null;
+
+            // Act
+            var result = controller.Subscribe(subscriptionRequest);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Subscription failed", badRequestResult.Value);
+        }
+
+        [Fact]
+        public void Subscribe_ShouldReturnBadRequest_WhenRequestHasEmptyFields()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            var invalidSubscriptionRequest = new SubscriptionRequest("", "", "");
+
+            mockService
+                .Setup(s => s.Subscribe(It.IsAny<SubscriptionRequest>()))
+                .Returns(false);
+
+            // Act
+            var result = controller.Subscribe(invalidSubscriptionRequest);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Subscription failed", badRequestResult.Value);
+        }
+
+        [Fact]
+        public void Subscribe_ShouldHandleServiceException_Gracefully()
+        {
+            // Arrange
+            var mockService = new Mock<INotificationService>();
+            var controller = new NotificationController(mockService.Object);
+
+            var subscriptionRequest = new SubscriptionRequest("user-123", "device-token-abc", "Alerts");
+
+            mockService
+                .Setup(s => s.Subscribe(It.IsAny<SubscriptionRequest>()))
+                .Throws(new Exception("Unexpected error"));
+
+            // Act
+            var result = controller.Subscribe(subscriptionRequest);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Subscription failed", badRequestResult.Value);
+        }
+
+
+
+
+
     }
 }

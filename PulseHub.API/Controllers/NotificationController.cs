@@ -30,26 +30,38 @@ namespace PulseHub.API.Controllers
             }
         }
 
+
         [HttpPost("subscribe")]
         public IActionResult Subscribe(SubscriptionRequest request)
         {
-            if (_notificationService.Subscribe(request))
+            if (request == null)
             {
-                return Ok("Subscription successful");
+                return BadRequest("Invalid request: SubscriptionRequest cannot be null");
             }
 
-            return BadRequest("Subscription failed");
+            if (string.IsNullOrWhiteSpace(request.UserId) ||
+                string.IsNullOrWhiteSpace(request.DeviceToken) ||
+                string.IsNullOrWhiteSpace(request.Channel))
+            {
+                return BadRequest("Invalid request: UserId, DeviceToken, and Channel cannot be null or empty");
+            }
+
+            try
+            {
+                if (_notificationService.Subscribe(request))
+                {
+                    return Ok("Subscription successful");
+                }
+
+                return BadRequest("Subscription failed");
+            }
+            catch (Exception ex)
+            {
+                // Log exception (optional)
+                return BadRequest("Subscription failed");
+            }
         }
 
-        [HttpPost("unsubscribe")]
-        public IActionResult Unsubscribe(string userId, string channel)
-        {
-            if(_notificationService.Unsubscribe(userId, channel))
-            {
-                return Ok("Unsubscription successful");
-            }
-            return BadRequest("Unsubscription failed");
-        }
 
         [HttpGet("subscriptions/{userId}")]
         public IActionResult GetSubscriptions(string userId)
@@ -83,5 +95,20 @@ namespace PulseHub.API.Controllers
             return BadRequest("Failed to update device token");
         }
 
+
+        [HttpGet("is-subscribed/{userId}/{channel}")]
+        public IActionResult IsSubscribed(string userId, string channel)
+        {
+            if (_notificationService.IsSubscribed(userId, channel))
+            {
+                return Ok("User is subscribed to the channel");
+            }
+            return BadRequest("User is not subscribed to the channel");
+        }
+
+        public object Unsubscribe(string userId, string channel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

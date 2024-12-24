@@ -10,5 +10,6 @@ namespace PulseHub.Core.Services
         List<SubscriptionRequest> GetSubscriptions(string userId);
         bool UpdateDeviceToken(string userId, string newToken);
         bool ValidateDeviceToken(string deviceToken);
+        bool IsSubscribed(string userId, string channel);
     }
 }

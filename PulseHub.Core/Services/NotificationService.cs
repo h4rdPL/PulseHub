@@ -18,6 +18,15 @@ namespace PulseHub.Core.Services
             return new List<SubscriptionRequest>();
         }
 
+        public bool IsSubscribed(string userId, string channel)
+        {
+            if (_subscriptions.TryGetValue(userId, out var userSubscriptions))
+            {
+                return userSubscriptions.Any(sub => sub.Channel == channel);
+            }
+            return false;
+        }
+
         public Task SendNotificationAsync(string userId, string message, string channel)
         {
             if (!_subscriptions.ContainsKey(userId))
@@ -49,7 +58,7 @@ namespace PulseHub.Core.Services
             var userSubscriptions = _subscriptions.GetOrAdd(request.UserId, _ => new List<SubscriptionRequest>());
             if (userSubscriptions.Any(s => s.Channel == request.Channel && s.DeviceToken == request.DeviceToken))
             {
-                return false; // Subscription already exists
+                return false; 
             }
 
             userSubscriptions.Add(request);
