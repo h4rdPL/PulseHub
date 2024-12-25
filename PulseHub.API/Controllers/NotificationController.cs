@@ -106,9 +106,27 @@ namespace PulseHub.API.Controllers
             return BadRequest("User is not subscribed to the channel");
         }
 
-        public object Unsubscribe(string userId, string channel)
+        [HttpPost("unsubscribe")]
+        public IActionResult Unsubscribe(string userId, string channel)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(channel))
+            {
+                return BadRequest("Invalid input: UserId or channel cannot be null or empty");
+            }
+
+            try
+            {
+                if (_notificationService.Unsubscribe(userId, channel))
+                {
+                    return Ok("Unsubscription successful");
+                }
+                return BadRequest("Unsubscription failed");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Unsubscription failed due to an error: {ex.Message}");
+            }
         }
     }
+
 }

@@ -208,10 +208,6 @@ namespace PulseHub.Tests
             Assert.Equal("User is not subscribed to the channel", badRequestResult.Value);
         }
 
-
-
-
-
         [Fact]
         public void Subscribe_ShouldReturnBadRequest_WhenSubscriptionRequestIsNull()
         {
@@ -226,8 +222,9 @@ namespace PulseHub.Tests
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("Subscription failed", badRequestResult.Value);
+            Assert.Equal("Invalid request: SubscriptionRequest cannot be null", badRequestResult.Value);
         }
+
 
         [Fact]
         public void Subscribe_ShouldReturnBadRequest_WhenRequestHasEmptyFields()
@@ -238,17 +235,14 @@ namespace PulseHub.Tests
 
             var invalidSubscriptionRequest = new SubscriptionRequest("", "", "");
 
-            mockService
-                .Setup(s => s.Subscribe(It.IsAny<SubscriptionRequest>()))
-                .Returns(false);
-
             // Act
             var result = controller.Subscribe(invalidSubscriptionRequest);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("Subscription failed", badRequestResult.Value);
+            Assert.Equal("Invalid request: UserId, DeviceToken, and Channel cannot be null or empty", badRequestResult.Value);
         }
+
 
         [Fact]
         public void Subscribe_ShouldHandleServiceException_Gracefully()
@@ -270,10 +264,5 @@ namespace PulseHub.Tests
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Subscription failed", badRequestResult.Value);
         }
-
-
-
-
-
     }
 }
