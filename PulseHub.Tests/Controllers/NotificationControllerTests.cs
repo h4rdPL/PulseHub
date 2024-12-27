@@ -1,9 +1,8 @@
-﻿using Xunit;
-using Microsoft.AspNetCore.Mvc;
-using PulseHub.Core.Services;
+﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using PulseHub.API.Controllers;
 using PulseHub.Core.DTO;
+using PulseHub.Core.Services;
 
 namespace PulseHub.Tests
 {

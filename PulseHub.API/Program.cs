@@ -1,12 +1,13 @@
 using PulseHub.Core.Services;
 using PulseHub.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using PulseHub.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(); 
 builder.Services.AddScoped<INotificationService, NotificationService>();
-
+builder.Services.AddScoped<IUserRepository, UserRepository>();  
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
