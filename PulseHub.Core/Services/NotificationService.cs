@@ -1,54 +1,50 @@
 ﻿using System.Collections.Concurrent;
+using PulseHub.Core.CustomError;
 using PulseHub.Core.DTO;
 
 namespace PulseHub.Core.Services
 {
     public class NotificationService : INotificationService
     {
-        // In-memory storage for subscriptions
         private readonly ConcurrentDictionary<string, List<SubscriptionRequest>> _subscriptions = new();
         private readonly ConcurrentDictionary<string, string> _deviceTokens = new();
 
         public List<SubscriptionRequest> GetSubscriptions(string userId)
         {
-            if (_subscriptions.TryGetValue(userId, out var subscriptions))
-            {
-                return subscriptions;
-            }
-            return new List<SubscriptionRequest>();
+            return _subscriptions.TryGetValue(userId, out var subscriptions)
+                ? subscriptions
+                : new List<SubscriptionRequest>();
         }
 
-        public bool IsSubscribed(string userId, string channel)
+        public Result IsSubscribed(string userId, string channel)
         {
-            if (_subscriptions.TryGetValue(userId, out var userSubscriptions))
+            if (_subscriptions.TryGetValue(userId, out var userSubscriptions) &&
+                userSubscriptions.Any(sub => sub.Channel == channel))
             {
-                return userSubscriptions.Any(sub => sub.Channel == channel);
+                return Result.Success();
             }
-            return false;
+
+            var error = new Error($"User {userId} is not subscribed to channel {channel}",
+                "The subscription could not be validated because the user is not subscribed to the specified channel.");
+            return Result.Failure(error);
         }
-
-        public Task SendNotificationAsync(string userId, string message, string channel)
+        public async Task<Result> SendNotificationAsync(string userId, string message, string channel)
         {
-            if (!_subscriptions.ContainsKey(userId))
+            if (!_subscriptions.TryGetValue(userId, out var subscriptions) || !subscriptions.Any(s => s.Channel == channel))
             {
-                throw new InvalidOperationException($"No subscriptions found for user {userId}");
+                var error = new Error("NoSubscriptions", "No subscriptions found for user.");
+                return Result.Failure(error);
             }
 
-            var subscriptions = _subscriptions[userId]
-                .Where(s => s.Channel == channel)
-                .ToList();
-
-            if (!subscriptions.Any())
-            {
-                throw new InvalidOperationException($"No subscriptions for channel {channel} for user {userId}");
-            }
-
-            // Simulate sending notification
             Console.WriteLine($"Sending '{message}' to {subscriptions.Count} devices for user {userId} on channel {channel}");
-            return Task.CompletedTask;
+            await Task.CompletedTask;
+            return Result.Success();
         }
 
-        public bool Subscribe(SubscriptionRequest request)
+
+
+
+        public Result Subscribe(SubscriptionRequest request)
         {
             if (!_deviceTokens.ContainsKey(request.UserId))
             {
@@ -58,18 +54,22 @@ namespace PulseHub.Core.Services
             var userSubscriptions = _subscriptions.GetOrAdd(request.UserId, _ => new List<SubscriptionRequest>());
             if (userSubscriptions.Any(s => s.Channel == request.Channel && s.DeviceToken == request.DeviceToken))
             {
-                return false; 
+                var error = new Error("Already subscribed to this channel with this device.",
+                    "Subscription request failed because the device is already subscribed to the channel.");
+                return Result.Failure(error);
             }
 
             userSubscriptions.Add(request);
-            return true;
+            return Result.Success();
         }
 
-        public bool Unsubscribe(string userId, string channel)
+        public Result Unsubscribe(string userId, string channel)
         {
             if (!_subscriptions.ContainsKey(userId))
             {
-                return false;
+                var error = new Error($"No subscriptions found for user {userId}",
+                    "Unsubscription failed because the user has no subscriptions.");
+                return Result.Failure(error);
             }
 
             var userSubscriptions = _subscriptions[userId];
@@ -80,14 +80,19 @@ namespace PulseHub.Core.Services
                 _subscriptions.TryRemove(userId, out _);
             }
 
-            return removed;
+            return removed
+                ? Result.Success()
+                : Result.Failure(new Error($"No subscriptions for channel {channel} found for user {userId}",
+                    "Unsubscription failed because no subscriptions exist for the specified channel."));
         }
 
-        public bool UpdateDeviceToken(string userId, string newToken)
+        public Result UpdateDeviceToken(string userId, string newToken)
         {
             if (!_deviceTokens.ContainsKey(userId))
             {
-                return false;
+                var error = new Error($"No device token found for user {userId}",
+                    "Update failed because no device token is associated with the user.");
+                return Result.Failure(error);
             }
 
             _deviceTokens[userId] = newToken;
@@ -100,13 +105,15 @@ namespace PulseHub.Core.Services
                 }
             }
 
-            return true;
+            return Result.Success();
         }
 
-
-        public bool ValidateDeviceToken(string deviceToken)
+        public Result ValidateDeviceToken(string deviceToken)
         {
-            return _deviceTokens.Values.Contains(deviceToken);
+            return _deviceTokens.Values.Contains(deviceToken)
+                ? Result.Success()
+                : Result.Failure(new Error("Invalid device token",
+                    "The provided device token does not match any existing tokens."));
         }
     }
 }

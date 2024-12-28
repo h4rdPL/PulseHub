@@ -1,35 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PulseHub.Core.CustomError;
 using PulseHub.Core.DTO;
 using PulseHub.Core.Services;
 
 namespace PulseHub.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class NotificationController : ControllerBase
     {
         private readonly INotificationService _notificationService;
-        public NotificationController(INotificationService notification)
+
+        public NotificationController(INotificationService notificationService)
         {
-            _notificationService = notification;
+            _notificationService = notificationService;
         }
-
-
-
-        [HttpPost("send")]
-        public async Task<IActionResult> SendNotificationAsync(string userId, string message, string channel)
-        {
-            try
-            {
-                await _notificationService.SendNotificationAsync(userId, message, channel);
-                return Ok("Notification sent successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
 
         [HttpPost("subscribe")]
         public IActionResult Subscribe(SubscriptionRequest request)
@@ -39,27 +24,24 @@ namespace PulseHub.API.Controllers
                 return BadRequest("Invalid request: SubscriptionRequest cannot be null");
             }
 
-            if (string.IsNullOrWhiteSpace(request.UserId) ||
-                string.IsNullOrWhiteSpace(request.DeviceToken) ||
-                string.IsNullOrWhiteSpace(request.Channel))
+            var result = _notificationService.Subscribe(request);
+
+            if (!result.IsSuccess)
             {
-                return BadRequest("Invalid request: UserId, DeviceToken, and Channel cannot be null or empty");
+                return BadRequest(result.Error.Code); // Zwrot kodu błędu w przypadku niepowodzenia
             }
 
-            try
-            {
-                if (_notificationService.Subscribe(request))
-                {
-                    return Ok("Subscription successful");
-                }
+            return Ok("Subscription successful");
+        }
 
-                return BadRequest("Subscription failed");
-            }
-            catch (Exception ex)
-            {
-                // Log exception (optional)
-                return BadRequest("Subscription failed");
-            }
+
+
+
+        [HttpPost("unsubscribe")]
+        public IActionResult Unsubscribe(string userId, string channel)
+        {
+            var result = _notificationService.Unsubscribe(userId, channel);
+            return result.IsSuccess ? Ok("Unsubscription successful") : BadRequest(result.Error?.Description ?? "Unsubscription failed");
         }
 
 
@@ -67,66 +49,44 @@ namespace PulseHub.API.Controllers
         public IActionResult GetSubscriptions(string userId)
         {
             var subscriptions = _notificationService.GetSubscriptions(userId);
-            if (subscriptions == null || subscriptions.Count == 0)
-            {
-                return NotFound("No subscriptions found for the user");
-            }
             return Ok(subscriptions);
         }
 
-
-        [HttpPost("validate-token")]
-        public IActionResult ValidateDeviceToken([FromBody] string deviceToken)
+        [HttpPost("update-device-token")]
+        public IActionResult UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest request)
         {
-            if (_notificationService.ValidateDeviceToken(deviceToken))
+            if (request == null || string.IsNullOrEmpty(request.UserId) || string.IsNullOrEmpty(request.NewToken))
             {
-                return Ok("Token is valid");
+                return BadRequest("Invalid request: UserId and NewToken cannot be null or empty");
             }
-            return BadRequest("Invalid device token");
-        }
 
-        [HttpPut("update-token")]
-        public IActionResult UpdateDeviceToken(string userId, string newToken)
-        {
-            if (_notificationService.UpdateDeviceToken(userId, newToken))
-            {
-                return Ok("Device token updated successfully");
-            }
-            return BadRequest("Failed to update device token");
+            var result = _notificationService.UpdateDeviceToken(request.UserId, request.NewToken);
+            return result.IsSuccess ? Ok("Device token updated successfully") : BadRequest(result.Error?.Description ?? "Failed to update device token");
         }
 
 
-        [HttpGet("is-subscribed/{userId}/{channel}")]
+        [HttpPost("is-subscribed")]
         public IActionResult IsSubscribed(string userId, string channel)
         {
-            if (_notificationService.IsSubscribed(userId, channel))
-            {
-                return Ok("User is subscribed to the channel");
-            }
-            return BadRequest("User is not subscribed to the channel");
+            var result = _notificationService.IsSubscribed(userId, channel);
+            return result.IsSuccess
+                ? Ok("User is subscribed to the channel")
+                : BadRequest(result.Error?.Description ?? "User is not subscribed to the channel");
         }
 
-        [HttpPost("unsubscribe")]
-        public IActionResult Unsubscribe(string userId, string channel)
+
+        [HttpPost("send-notification")]
+        public async Task<IActionResult> SendNotificationAsync(string userId, string message, string channel)
         {
-            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(channel))
+            var result = await _notificationService.SendNotificationAsync(userId, message, channel);
+
+            if (!result.IsSuccess)
             {
-                return BadRequest("Invalid input: UserId or channel cannot be null or empty");
+                return BadRequest(result.Error);
             }
 
-            try
-            {
-                if (_notificationService.Unsubscribe(userId, channel))
-                {
-                    return Ok("Unsubscription successful");
-                }
-                return BadRequest("Unsubscription failed");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Unsubscription failed due to an error: {ex.Message}");
-            }
+            return Ok("Notification sent successfully");
         }
-    }
 
+    }
 }
