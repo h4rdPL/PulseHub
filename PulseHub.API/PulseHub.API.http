@@ -1,0 +1,6 @@
+@PulseHub.API_HostAddress = http://localhost:5269
+
+GET {{PulseHub.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "f5eFcZOIUQlenb5vKOtLj41g+pNe/cdYrq94Qshzz8o=",
+  "Source": "PulseHub.API",
+  "BasePath": "_content/PulseHub.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
