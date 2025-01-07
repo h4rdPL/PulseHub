@@ -180,3 +180,4 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Microsoft.Exte
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Scrutor.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

@@ -353,3 +353,5 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\ru\Microsoft.Cod
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.API\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
