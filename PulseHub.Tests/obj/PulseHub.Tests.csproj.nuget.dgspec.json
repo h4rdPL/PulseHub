@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj": {}
+    "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj": {}
   },
   "projects": {
-    "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj": {
+    "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj",
+        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj",
         "projectName": "PulseHub.API",
-        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj",
+        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\obj\\",
+        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
-                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
+              "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
+                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
               }
             }
           }
@@ -99,14 +99,14 @@
         }
       }
     },
-    "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj": {
+    "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj",
+        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj",
         "projectName": "PulseHub.Core",
-        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj",
+        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\obj\\",
+        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -159,14 +159,14 @@
         }
       }
     },
-    "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
+    "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj",
+        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj",
         "projectName": "PulseHub.Infrastructure",
-        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj",
+        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\obj\\",
+        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -188,8 +188,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj": {
-                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj"
+              "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj": {
+                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj"
               }
             }
           }
@@ -237,14 +237,14 @@
         }
       }
     },
-    "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj": {
+    "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj",
+        "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj",
         "projectName": "PulseHub.Tests",
-        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj",
+        "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\obj\\",
+        "outputPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -266,14 +266,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj": {
-                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj"
+              "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj": {
+                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj"
               },
-              "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj": {
-                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj"
+              "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj": {
+                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj"
               },
-              "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
-                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
+              "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
+                "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
               }
             }
           }

@@ -23,7 +23,7 @@ namespace PulseHub.Tests.Controllers
         {
             // Arrange
             var userId = "user-123";
-            var user = new User { Id = userId, UserName = "testuser", Email = "test@example.com" };
+            var user = new User { Id = userId, Username = "testuser", Email = "test@example.com" };
             _mockUserRepository.Setup(repo => repo.GetUserById(userId)).ReturnsAsync(user);
 
             // Act
@@ -33,7 +33,7 @@ namespace PulseHub.Tests.Controllers
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnedUser = Assert.IsType<User>(okResult.Value);
             Assert.Equal(userId, returnedUser.Id);
-            Assert.Equal("testuser", returnedUser.UserName);
+            Assert.Equal("testuser", returnedUser.Username);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace PulseHub.Tests.Controllers
         public async Task AddUser_ShouldReturnCreated_WhenUserIsValid()
         {
             // Arrange
-            var user = new User { Id = "user-123", UserName = "newuser", Email = "new@example.com" };
+            var user = new User { Id = "user-123", Username = "newuser", Email = "new@example.com" };
 
             // Act
             var result = await _controller.AddUser(user);
@@ -64,7 +64,7 @@ namespace PulseHub.Tests.Controllers
             var createdResult = Assert.IsType<CreatedAtActionResult>(result);
             var createdUser = Assert.IsType<User>(createdResult.Value);
             Assert.Equal(user.Id, createdUser.Id);
-            Assert.Equal("newuser", createdUser.UserName);
+            Assert.Equal("newuser", createdUser.Username);
         }
 
         [Fact]
@@ -141,7 +141,7 @@ namespace PulseHub.Tests.Controllers
         public async Task UpdateUser_ShouldReturnNoContent_WhenUserIsUpdated()
         {
             // Arrange
-            var user = new User { Id = "user-123", UserName = "updateduser", Email = "updated@example.com" };
+            var user = new User { Id = "user-123", Username = "updateduser", Email = "updated@example.com" };
 
             _mockUserRepository.Setup(repo => repo.Update(user));
 
@@ -156,7 +156,7 @@ namespace PulseHub.Tests.Controllers
         public async Task UpdateUser_ShouldReturnNotFound_WhenUserDoesNotExist()
         {
             // Arrange
-            var user = new User { Id = "nonexistent-user", UserName = "updateduser", Email = "updated@example.com" };
+            var user = new User { Id = "nonexistent-user", Username = "updateduser", Email = "updated@example.com" };
             _mockUserRepository.Setup(repo => repo.Update(user)).Throws(new KeyNotFoundException("User not found"));
 
             // Act
@@ -177,6 +177,7 @@ namespace PulseHub.Tests.Controllers
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("User cannot be null", badRequestResult.Value);
         }
+
         [Fact]
         public async Task DeactivateUser_ShouldReturnSuccessResult_WhenUserDeactivatedSuccessfully()
         {

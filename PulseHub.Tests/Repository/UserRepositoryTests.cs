@@ -24,7 +24,7 @@ public class UserRepositoryTests
         var user = new User
         {
             Id = Guid.NewGuid().ToString(),
-            UserName = "TestUser",
+            Username = "TestUser",
             Email = "testuser@example.com",
             Password = "hashed-password"
         };
@@ -36,7 +36,7 @@ public class UserRepositoryTests
         // Assert
         var savedUser = context.Users.FirstOrDefault(u => u.Email == "testuser@example.com");
         Assert.NotNull(savedUser);
-        Assert.Equal("TestUser", savedUser.UserName);
+        Assert.Equal("TestUser", savedUser.Username);
     }
 
     [Fact]
@@ -49,7 +49,7 @@ public class UserRepositoryTests
         var user = new User
         {
             Id = Guid.NewGuid().ToString(),
-            UserName = "TestUser",
+            Username = "TestUser",
             Email = "testuser@example.com",
             Password = "hashed-password"
         };
@@ -62,7 +62,7 @@ public class UserRepositoryTests
 
         // Assert
         Assert.NotNull(retrievedUser);
-        Assert.Equal("TestUser", retrievedUser.Result.UserName);
+        Assert.Equal("TestUser", retrievedUser.Result.Username);
     }
 
     [Fact]
@@ -75,7 +75,7 @@ public class UserRepositoryTests
         var user = new User
         {
             Id = Guid.NewGuid().ToString(),
-            UserName = "TestUser",
+            Username = "TestUser",
             Email = "testuser@example.com",
             Password = "hashed-password"
         };
@@ -84,14 +84,14 @@ public class UserRepositoryTests
         context.SaveChanges();
 
         // Act
-        user.UserName = "UpdatedUser";
+        user.Username = "UpdatedUser";
         repository.Update(user);
         context.SaveChanges();
 
         // Assert
         var updatedUser = context.Users.FirstOrDefault(u => u.Id == user.Id);
         Assert.NotNull(updatedUser);
-        Assert.Equal("UpdatedUser", updatedUser.UserName);
+        Assert.Equal("UpdatedUser", updatedUser.Username);
     }
 
     [Fact]
@@ -104,7 +104,7 @@ public class UserRepositoryTests
         var user = new User
         {
             Id = Guid.NewGuid().ToString(),
-            UserName= "TestUser",
+            Username = "TestUser",
             Email = "testuser@example.com",
             Password = "hashed-password"
         };

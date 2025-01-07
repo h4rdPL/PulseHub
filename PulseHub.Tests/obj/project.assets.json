@@ -8755,11 +8755,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj",
+      "projectUniqueName": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj",
       "projectName": "PulseHub.Tests",
-      "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\PulseHub.Tests.csproj",
+      "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\PulseHub.Tests.csproj",
       "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-      "outputPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Tests\\obj\\",
+      "outputPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8781,14 +8781,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj": {
-              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj"
+            "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj": {
+              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj"
             },
-            "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj": {
-              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj"
+            "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj": {
+              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj"
             },
-            "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
-              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
+            "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj": {
+              "projectPath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Infrastructure\\PulseHub.Infrastructure.csproj"
             }
           }
         }

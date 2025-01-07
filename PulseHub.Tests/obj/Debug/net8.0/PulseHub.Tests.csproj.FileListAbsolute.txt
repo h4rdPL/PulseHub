@@ -175,3 +175,8 @@ D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Microsoft.Enti
 D:\_programowanie\dotNET\PulseHub-main\PulseHub.Tests\obj\Debug\net8.0\PulseHub.Tests.dll
 D:\_programowanie\dotNET\PulseHub-main\PulseHub.Tests\obj\Debug\net8.0\refint\PulseHub.Tests.dll
 D:\_programowanie\dotNET\PulseHub-main\PulseHub.Tests\obj\Debug\net8.0\PulseHub.Tests.pdb
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\libman.json
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Scrutor.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+D:\_programowanie\dotNET\PulseHub\PulseHub.Tests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

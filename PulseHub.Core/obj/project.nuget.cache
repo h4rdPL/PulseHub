@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pzX57/TqituQnp4PpH9e0i8WAlCwkrgjRm6/zVzMeSCMJnEyw+fM6INJsKlBTpqxP0VfH+onl3DrxVt8K94jcg==",
+  "dgSpecHash": "mGAs+F0M3MH71j4KfHsTFa7VswhLFbsg1sS6foDQeM50sgpJySIGi2ynJdvTyjyP7YzY/j4fZRB+L+IDSDHlKg==",
   "success": true,
-  "projectFilePath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.Core\\PulseHub.Core.csproj",
+  "projectFilePath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.Core\\PulseHub.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xtKxZRtb7EmthcwXdyq7sU4CMP52BPiPKnm90OkYvyXU7fqVF9sg0yMLp/DTBOCCCMgIYBf1KossOfDti96asg==",
+  "dgSpecHash": "35XCpU6jNTxk+dzxSOHKG/JX2KIABZE400bYyhUYI3j7Z5AjIX4Qj1JF3QiXVvIPmrwN5tJaSSpaRRt03Qoipg==",
   "success": true,
-  "projectFilePath": "D:\\_programowanie\\dotNET\\PulseHub-main\\PulseHub.API\\PulseHub.API.csproj",
+  "projectFilePath": "D:\\_programowanie\\dotNET\\PulseHub\\PulseHub.API\\PulseHub.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
